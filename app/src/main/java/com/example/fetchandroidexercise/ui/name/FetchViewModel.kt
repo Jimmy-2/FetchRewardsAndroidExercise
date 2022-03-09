@@ -32,6 +32,7 @@ class FetchViewModel : ViewModel() {
                         .sortedWith(compareBy({ it.listId }, { it.name }))
                 _fetchItems.value = namesList
 
+
             } catch (e: Exception) {
                 _errorMessage.value = "Failure: ${e.message}"
             }

@@ -1,5 +1,6 @@
 package com.example.fetchandroidexercise
 
+
 import com.example.fetchandroidexercise.network.FetchApiService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -10,6 +11,7 @@ import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
+//Test
 class FetchItemsServiceTests: BaseTest() {
     private lateinit var service: FetchApiService
 
@@ -29,14 +31,22 @@ class FetchItemsServiceTests: BaseTest() {
     }
 
     @Test
-    fun api_service() {
-        enqueue("fetchItems.json")
+    fun test_api_service_on_mock_json() {
+        enqueue("fetch_items.json")
         runBlocking {
             val apiResponse = service.getNames()
 
             Assert.assertNotNull(apiResponse)
-            Assert.assertTrue("The list was empty", apiResponse.isNotEmpty())
-            Assert.assertEquals("The id's did not match", "755", apiResponse[0].id)
+            Assert.assertTrue("Error: No fetch items received", apiResponse.isNotEmpty())
+
+            val correctListIds = listOf(2, 2, 1, 1, 3, 4, 4, 1, 2, 1, 3, 2, 2, 3, 2, 4, 4, 1, 2, 2)
+            for (i in 0..apiResponse.size - 1) {
+                Assert.assertEquals("Error: list id did not match." , correctListIds[i], apiResponse[i].listId)
+            }
+
         }
     }
+
+
+
 }
