@@ -10,9 +10,9 @@ Display this list of items to the user based on the following requirements:
     Filter out any items where "name" is blank or null.
 
 ### Testing Instructions:
-There instrumental tests and a unit test for the app.
+There are instrumental tests and a unit test for the app.
 
-* Run the FetchItemServiceTests class to test simulate receiving data from a mock json file.
+* Run the FetchItemServiceTests class to simulate receiving data from a mock json file.
 
-* Run the ExampleInstrumentedTest class to test realistic delays and data loading when accessing data from an API and to simulate a user using the app.
+* Run the ExampleInstrumentedTest class to test realistic delays and data loading when accessing data from an API, and to simulate a user using the app.
 
